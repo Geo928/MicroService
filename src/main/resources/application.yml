@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: eureka-server
+
+server:
+  port: ${PORT:8761}
+
+
+eureka:
+  server:
+    expected-client-Renewal-interval-seconds: 20
+
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    registerWithEureka: false
+    fetchRegistry: false
+    eureka-server-connect-timeout-seconds: 60
+    eureka-server-read-timeout-seconds: 5
+    eureka-service-url-poll-interval-seconds: 15
+    use-dns-for-fetching-service-urls: false
+    log-delta-diff: false
+    prefer-same-zone-eureka: true
+    healthcheck:
+      enabled: true
+
+  instance:
+    lease-expiration-duration-in-seconds: 70
+    hostname: my-eureka-server.com
+
+
+logging:
+  level:
+    com.netflix.eureka: OFF
+    com.netflix.discovery: OFF
